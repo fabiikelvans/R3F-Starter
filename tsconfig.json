@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Mesh/Mesh.jsx", "components/Mesh/Car.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Mesh/Loader/Loader.jsx", "components/Mesh/Mesh.jsx", "components/Mesh/Car.jsx"],
   "exclude": ["node_modules"]
 }

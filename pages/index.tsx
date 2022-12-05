@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Script from "next/script";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useMemo, useRef } from "react";
+import { Suspense, useMemo, useRef, useState } from "react";
 import Mesh from "../components/Mesh/Mesh";
-import { Loader } from "@react-three/drei";
+import { PerformanceMonitor } from "@react-three/drei";
+import {Loader} from '../components/Loader/Loader'
 
 
 export default function Home() {
+  const [dpr, setDpr] = useState(1.5);
   return (
     <div>
       <Head>
@@ -16,13 +18,15 @@ export default function Home() {
       </Head>
       
       <div className="bg-[#f1f1f1] h-[100vh] w-[100vw]">
-      <Canvas shadows>
+      <Canvas shadows dpr={dpr}>
         <Suspense fallback={null}>
           <Mesh/>
 
         </Suspense>
+        <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} ></PerformanceMonitor>
       </Canvas>
-      <Loader />
+      <Loader/>
+
 
       </div>
 
