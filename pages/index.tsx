@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useMemo, useRef } from "react";
 import Mesh from "../components/Mesh/Mesh";
+import { Loader } from "@react-three/drei";
 
 
 export default function Home() {
@@ -18,8 +19,11 @@ export default function Home() {
       <Canvas shadows>
         <Suspense fallback={null}>
           <Mesh/>
+
         </Suspense>
       </Canvas>
+      <Loader />
+
       </div>
 
     </div>
