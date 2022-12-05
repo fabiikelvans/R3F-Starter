@@ -1,10 +1,11 @@
 import Head from "next/head";
 import Script from "next/script";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, extend } from "@react-three/fiber";
 import { Suspense, useMemo, useRef, useState } from "react";
 import Mesh from "../components/Mesh/Mesh";
 import { PerformanceMonitor } from "@react-three/drei";
 import {Loader} from '../components/Loader/Loader'
+import Spinner from "../components/Spinner/Spinner";
 
 
 export default function Home() {
@@ -18,15 +19,15 @@ export default function Home() {
       </Head>
       
       <div className="bg-[#f1f1f1] h-[100vh] w-[100vw]">
-      <Canvas shadows dpr={dpr}>
-        <Suspense fallback={null}>
-          <Mesh/>
-
+    
+      <Suspense fallback={<Spinner />}>
+        <Canvas shadows dpr={dpr}>
+            <Mesh/>
+          <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} ></PerformanceMonitor>
+        </Canvas>
         </Suspense>
-        <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} ></PerformanceMonitor>
-      </Canvas>
-      <Loader/>
-
+      
+        <Loader/>
 
       </div>
 
